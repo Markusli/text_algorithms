@@ -1,0 +1,42 @@
+ {
+    "Dataset": {
+        "fore" : { "File" : "$inp$" },
+        "back" : { "File" : "$ref$" }
+    },
+    "Reader" : {
+        "Method" : "$met$",
+        "Separator": "",
+        "CountSeparator": "\t"
+    },
+    "Extension": {
+        "Method": "Group",
+        "Groups" : {
+            "." : { "elements" : "ACDEFGHIKLMNPRQSTVWY"}
+        },
+        "Extendable": {
+            "Seqs(fore)" : {"min" : $ms$},
+            "Matches(fore)" : {"min" : $mm$},
+            "NoStartingGroup" : {"enabled" : "true"}
+        },
+        "Outputtable" : {
+            "Seqs(fore)" : {"min" : $ms$},
+            "Matches(fore)" : {"min" : $mm$},
+            "HyperApprox(fore, back)" : {"max" : $pval$},
+            "MatchesPropRatio(fore,back)" : {"min" : $rat$},
+            "PatChars()" : {"min" : $chr$},
+            "NoStartingGroup" : {"enabled" : "$nsg$"},
+            "NoEndingGroup" : {}
+        }
+    },
+    "Output": {
+        "SortBy": ["$sb$"],
+        "Count": $limit$
+    },
+    "Printer" : {
+        "Method" : "Formatted",
+        "ShowHeader": true,
+        "Reverse": false,
+        "Header": "",
+        "Format": "Pat?()\tSeqs(fore)\tSeqs(back)\tMatches(fore)\tMatches(back)\tMatchesPropRatio(fore,back)\tHyper(fore,back)\n"
+    }
+}
